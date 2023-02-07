@@ -18,7 +18,6 @@ public class EvaluarHabilidadesControlador {
 
     @PostMapping(path = "/habilidad")
     public ResponseEntity retornarHabilidad(@RequestBody Habilidad habilidad) {
-        System.out.println("Ingreso --------------------->>>>>>>>>>>>>>");
         return ResponseEntity.ok(this.evaluarHabilidadesServicio.evaluarHabilidades(habilidad));
     }
 }

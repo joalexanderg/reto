@@ -9,21 +9,18 @@ import static com.banistmo.ing.reto.utilidades.Constantes.*;
 
 public class Utilidad {
     public static Boolean validarEntrada(List<String> entradaSkill) {
-        if (entradaSkill.size() == 6) {
+        if (entradaSkill.size() == TAMANO_LISTA) {
             char[] vectorCaracteres;
-            //Validar letras
             for (String entrada : entradaSkill) {
-                if(entrada.length() ==6 ){
+                if(entrada.length() == TAMANO_LISTA ){
                     vectorCaracteres = entrada.toCharArray();
                     for (char letra : vectorCaracteres) {
                         if (!letraValida(letra)) {
                             return false;
                         }
-
                     }
                 }
                 else return false;
-
             }
             return true;
         } else {
@@ -58,14 +55,10 @@ public class Utilidad {
         int contadorFila = 0;
         for (String fila : habilidad) {
             char[] vectorfila = fila.toCharArray();
-
-            StringBuilder secuenciaFila = new StringBuilder();
             for (int i = 0; i < fila.length(); i++) {
-                secuenciaFila.append(vectorfila[i]);
                 matrizHabilidades[contadorFila][i] = String.valueOf(vectorfila[i]);
             }
             contadorFila++;
-
         }
         System.out.println("MaTRIZ");
         imprimirMatriz(matrizHabilidades);
@@ -73,9 +66,9 @@ public class Utilidad {
     }
 
     public static void imprimirMatriz(String[][] matriz) {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < TAMANO_LISTA; i++) {
             StringBuilder fila = new StringBuilder();
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < TAMANO_LISTA; j++) {
                 fila.append(matriz[i][j]);
             }
             System.out.println(fila);
@@ -87,14 +80,14 @@ public class Utilidad {
 
         String diagonalPrimaria = "";
         String diagonalSecundaria = "";
-        int n = 6;
-        for (int j = 0; j < n; j++) {
+
+        for (int j = 0; j < TAMANO_LISTA; j++) {
             StringBuilder columna = new StringBuilder();
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < TAMANO_LISTA; i++) {
                 if (i == j) {
                     diagonalPrimaria = diagonalPrimaria + habilidad[i][j];
                 }
-                if (j == ((n - 1) - i)) {
+                if (j == ((TAMANO_LISTA - 1) - i)) {
                     diagonalSecundaria = diagonalSecundaria + habilidad[i][j];
                 }
                 columna.append(habilidad[i][j]);

@@ -13,5 +13,5 @@ public class Constantes {
     public static final String MENSAJE_DE_APROBACION= "Es developer y bienvenido a Banistmo.";
     public static final String MENSAJE_VALORES_DE_INGRESO_INVALIDOS = "El registro del candidato tiene valores invalidos: El arreglo debe contener 6 valores de longitud 6 cada uno." +
             " Adicionalmente los valores permitdos son (B,N,T,M)";
-
+    public static final int TAMANO_LISTA=6;
 }
