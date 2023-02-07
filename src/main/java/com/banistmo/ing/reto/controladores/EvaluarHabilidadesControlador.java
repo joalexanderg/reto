@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/evaluar", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EvaluarHabilidadesControlador {
@@ -22,6 +20,5 @@ public class EvaluarHabilidadesControlador {
     public ResponseEntity retornarHabilidad(@RequestBody Habilidad habilidad) {
         System.out.println("Ingreso --------------------->>>>>>>>>>>>>>");
         return ResponseEntity.ok(this.evaluarHabilidadesServicio.evaluarHabilidades(habilidad));
-
     }
 }
