@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static com.banistmo.ing.reto.utilidades.Constantes.*;
 import static com.banistmo.ing.reto.utilidades.Utilidad.*;
 
 @Component
@@ -63,21 +64,21 @@ public class EvaluarHabilidadesServicio {
             if (esDesarrollador) {
                 System.out.println("Es developer y bienvenido a Banistmo.");
                 mensaje = "Es developer y bienvenido a Banistmo.";
-                respuestaServicio.setCode(200);
-                respuestaServicio.setMessage(mensaje);
+                respuestaServicio.setCode(CODE_200);
+                respuestaServicio.setMessage(MENSAJE_DE_APROBACION);
                 respuestaServicio.setStatus(Boolean.TRUE);
             } else {
                 System.out.println("Muchas gracias, pero no cumples con los requisitos.");
-                mensaje = "Es developer y bienvenido a Banistmo.";
-                respuestaServicio.setCode(200);
-                respuestaServicio.setMessage(mensaje);
+                mensaje = "Muchas gracias, pero no cumples con los requisitos.";
+                respuestaServicio.setCode(CODE_200);
+                respuestaServicio.setMessage(MENSAJE_DE_NO_APROBACION);
                 respuestaServicio.setStatus(Boolean.TRUE);
             }
         } else{
             System.out.println("El registro del candidato tiene valores invalidos");
             mensaje = "El registro del candidato tiene valores invalidos";
-            respuestaServicio.setCode(400);
-            respuestaServicio.setMessage(mensaje);
+            respuestaServicio.setCode(CODE_400);
+            respuestaServicio.setMessage(MENSAJE_VALORES_DE_INGRESO_INVALIDOS);
             respuestaServicio.setStatus(Boolean.TRUE);
         }
 

@@ -5,19 +5,25 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import static com.banistmo.ing.reto.utilidades.Constantes.*;
+
 public class Utilidad {
     public static Boolean validarEntrada(List<String> entradaSkill) {
         if (entradaSkill.size() == 6) {
             char[] vectorCaracteres;
             //Validar letras
             for (String entrada : entradaSkill) {
-                vectorCaracteres = entrada.toCharArray();
-                for (char letra : vectorCaracteres) {
-                    if (!letraValida(letra)) {
-                        return false;
-                    }
+                if(entrada.length() ==6 ){
+                    vectorCaracteres = entrada.toCharArray();
+                    for (char letra : vectorCaracteres) {
+                        if (!letraValida(letra)) {
+                            return false;
+                        }
 
+                    }
                 }
+                else return false;
+
             }
             return true;
         } else {
@@ -29,10 +35,10 @@ public class Utilidad {
         boolean valida;
 
         switch (letra) {
-            case 'B':
-            case 'N':
-            case 'T':
-            case 'M':
+            case B:
+            case N:
+            case T:
+            case M:
                 valida = true;
                 break;
             default:
@@ -53,9 +59,9 @@ public class Utilidad {
         for (String fila : habilidad) {
             char[] vectorfila = fila.toCharArray();
 
-            String secuenciaFila = "";
+            StringBuilder secuenciaFila = new StringBuilder();
             for (int i = 0; i < fila.length(); i++) {
-                secuenciaFila = secuenciaFila + vectorfila[i];
+                secuenciaFila.append(vectorfila[i]);
                 matrizHabilidades[contadorFila][i] = String.valueOf(vectorfila[i]);
             }
             contadorFila++;
@@ -109,8 +115,6 @@ public class Utilidad {
     }
 
     public static Boolean esDesarrollador(List<String> habilidad) {
-        final String[] RESULTADO_ESPERADO = {"BBBB", "NNNN", "TTTT", "MMMM"};
-
         for (String valorEsperado : RESULTADO_ESPERADO) {
 
             Optional<String> resultadoPositivo = habilidad.stream()
