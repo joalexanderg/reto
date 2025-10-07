@@ -4,11 +4,11 @@ import co.com.bancolombia.model.exceptions.message.TechnicalErrorMessage;
 import lombok.Getter;
 
 @Getter
-public class TechbicalExeption extends RuntimeException{
+public class TechnicalException extends RuntimeException{
 
     private final TechnicalErrorMessage errorMessage;
 
-    public TechbicalExeption(Throwable cause, TechnicalErrorMessage errorMessage) {
+    public TechnicalException(Throwable cause, TechnicalErrorMessage errorMessage) {
         super(errorMessage.getMessage(), cause);
         this.errorMessage = errorMessage;
     }
