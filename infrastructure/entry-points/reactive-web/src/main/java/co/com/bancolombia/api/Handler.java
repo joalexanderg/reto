@@ -3,6 +3,7 @@ package co.com.bancolombia.api;
 import co.com.bancolombia.api.dto.RegisterAccountRequest;
 import co.com.bancolombia.model.exceptions.BusinessException;
 import co.com.bancolombia.model.exceptions.message.BusinessErrorMessage;
+import co.com.bancolombia.usecase.getstatus.GetStatusUseCase;
 import co.com.bancolombia.usecase.registeraccountt.RegisterAccountUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ public class Handler {
 //private  final UseCase useCase;
 //private  final UseCase2 useCase2;
     private final RegisterAccountUseCase  registerAccounttUseCase;
+    private final GetStatusUseCase getStatusUseCase;
 
     public Mono<ServerResponse> register(ServerRequest serverRequest) {
         // useCase.logic();
@@ -31,8 +33,10 @@ public class Handler {
     }
 
     public Mono<ServerResponse> listenGETOtherUseCase(ServerRequest serverRequest) {
-        // useCase2.logic();
-        return ServerResponse.ok().bodyValue("");
+        // useCase2.logic();// Se está usando el id para indicar la respuesta que se espera
+        String id = serverRequest.queryParam("id").orElse("statusok");
+        return getStatusUseCase.getStatus(id)
+                .flatMap(status -> ServerResponse.ok().bodyValue(status));
     }
 
     public Mono<ServerResponse> listenPOSTUseCase(ServerRequest serverRequest) {

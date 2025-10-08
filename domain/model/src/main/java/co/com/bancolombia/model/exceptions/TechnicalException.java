@@ -8,6 +8,11 @@ public class TechnicalException extends RuntimeException{
 
     private final TechnicalErrorMessage errorMessage;
 
+    public TechnicalException(TechnicalErrorMessage errorMessage) {
+        super(errorMessage.getMessage());
+        this.errorMessage = errorMessage;
+    }
+
     public TechnicalException(Throwable cause, TechnicalErrorMessage errorMessage) {
         super(errorMessage.getMessage(), cause);
         this.errorMessage = errorMessage;
